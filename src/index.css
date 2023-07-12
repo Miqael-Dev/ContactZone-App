@@ -7,7 +7,265 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+  overflow: hidden;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  padding: 7px;
+  background: rgb(226, 249, 249);
+}
+
+.active {
+  background-color: rgb(243, 78, 78);
+  border-radius: 4px;
+  color: white;
+}
+
+.navLink {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  align-items: center;
+}
+
+.navLink a{
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 3px;
+}
+
+.navLink a:hover {
+  background: rgba(218, 165, 32, 0.513);
+  border-radius: 4px;
+  color: white;
+}
+
+.leftArea {
+  float: left;
+  background-color: rgb(226, 249, 249);
+  height: 100vh;
+  padding: 7px;
+  width: 23%;
+}
+
+.form {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(183, 182, 182);
+} 
+  
+#searchInput {
+  margin-top: 10px;
+  width: 70%;
+  height: 2.5rem;
+  outline-color: rgba(247, 2, 2, 0.776);
+  border-radius: 5px;
+  border: 1px solid rgb(153, 136, 136);
+  padding: 5px;
+  font-size: 16px;
+}
+
+.formOutput {
+  margin-top: 10px;
+  width: 100%;
+  height: 82%;
+}
+
+.formOutput a {
+  text-decoration: none;
+  color: black;
+}
+
+.formOutput li {
+  user-select: none;
+  border-radius: 7px;
+  width: 100%;
+  padding: 10px;
+  background: rgba(222, 222, 222, 0.596);
+  list-style: none;
+  font-size: 1.1rem;
+  margin: 6px 0 6px 0;
+  cursor: pointer;
+}
+
+.formOutput li:hover {
+  background: rgba(213, 212, 212, 0.812);
+}
+
+.name {
+  background: rgb(226, 249, 249);
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  border-top: 1px solid rgb(183, 182, 182);
+  bottom: 0px;
+  left: 4.5rem;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: 'Calibri';
+}
+
+.underline {
+  border-top: 4px solid red;
+}
+
+.btnAdd {
+  margin-left: 1%;
+  cursor: pointer;
+  font-size: 16px;
+  width: 29%;
+  height: 2.5rem;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.rightArea {
+  float: right;
+  width: 74%;
+  height: 100vh;
+}
+
+.ContactImage {
+  border-radius: 10px;
+  width: 9rem;
+  height: 9rem;
+}
+
+.ContactImage img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 20px;
+  box-shadow: 0 0px 5px 2px grey;
+  background-attachment: fixed;
+}
+
+.ContactInfo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Calibri';
+  margin-left: 10px;
+
+}
+
+.ContactName {
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.ContactAge {
+  color: rgb(104, 103, 103);
+}
+
+.ContactView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.Board {
+  align-items: center;
+  height:30%;
+  justify-content: center;
+  display: flex;
+}
+
+.ContactEdit {
+  cursor: pointer;
+  background: rgb(133, 36, 224);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  width: 4rem;
+  height: 2rem;
+  margin-right: 4px;
+  margin-top: 35px;
+}
+
+.ContactDelete {
+  cursor: pointer;
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background: rgb(248, 18, 18);
+  margin-top: 35px;
+}
+
+.AddNew {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AddNewBoard {
+  width: 40%;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: rgb(236, 231, 231);
+}
+
+.AddNewBoard h2 {
+  margin-top: 20px;
+  font-family: 'calibri';
+  font-size: 20px;
+  color: rgb(87, 87, 87);
+  font-weight: 300;
+}
+
+.ageInput {
+  width: 28%;
+  height: 2.5rem;
+  outline-color: rgba(247, 2, 2, 0.776);
+  border-radius: 5px;
+  border: 1px solid rgb(153, 136, 136);
+  padding: 5px;
+  font-size: 16px;
+}
+
+.AddBtn {
+  cursor: pointer;
+  background: rgb(133, 36, 224);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  width: 5rem;
+  height: 2.5rem;
+  margin-top: 30px;
+}
+
+.firstname,
+.lastname {
+  width: 100%;
+  height: 2.5rem;
+  outline-color: rgba(247, 2, 2, 0.776);
+  border-radius: 5px;
+  border: 1px solid rgb(153, 136, 136);
+  padding: 5px;
+  font-size: 16px;
 }

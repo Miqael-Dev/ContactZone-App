@@ -1,0 +1,32 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "firstName": "Michael",
+      "lastName": "Bansah",
+      "image": "./Images/img1.png",
+      "age": 21
+    },
+    {
+      "id": 2,
+      "firstName": "Josey",
+      "lastName": "Killa",
+      "image": "./Images/img2.png",
+      "age": 19
+    },
+    {
+      "id": 3,
+      "firstName": "Desmond",
+      "lastName": "Asante",
+      "image": "./Images/img3.png",
+      "age": 30
+    },
+    {
+      "id": 4,
+      "firstName": "Jason",
+      "lastName": "Bansah",
+      "image": "./Images/img4.jpg",
+      "age": 15
+    }
+  ]
+}
