@@ -1,18 +1,19 @@
-import { useLoaderData } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./Home";
 import AddNew from "./AddNew";
+import db from "./Firebase"
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+
 
 
 const Header = () => {
-    const contact = useLoaderData();
+    const [data, setData] = useState([])
     const [userInput, setUserInput] = useState("")
-    let filter = contact.filter(names => {
+    let filter = data.filter(names => {
         if(userInput === ""){
             return null;
         }else {
-        return names.firstName.toLowerCase().includes(userInput)
-        || names.lastName.toLowerCase().includes(userInput);
+        return names.name.toLowerCase().includes(userInput)
             }
     })
     const handleChange = e => {
@@ -20,15 +21,23 @@ const Header = () => {
         setUserInput(e.target.value.toLowerCase())
     }
 
+    console.log(data)
+
+    useEffect(() => {
+        onSnapshot(collection(db, "user"), (snapshot) => {
+            setData(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+        })
+    }, [])
+
+
     const [clickEvent, setClickEvent] = useState(false)
 
     const [clickOutput , setClickedOutput] = useState({
-        firstName:"",
-        lastName: "",
-        image: "",
-        Age: null
+        Name: "",
+        Age: null,
+        Bio: ""
     })
-    
+    console.log(clickOutput)
     return ( 
         <>
         <div>
@@ -36,21 +45,30 @@ const Header = () => {
                 <div className="form">
                     <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." />
                     <button className="btnAdd" onClick={() => {
-                        setClickEvent(true)
+                        setClickEvent(true);
                     }}>Add</button>
                 </div>
                 <div className="formOutput">
                     {
                         filter.map(names => (
-                            <li onClick={() => {
-                               setClickedOutput({
-                                firstName: `${names.firstName}`,
-                                lastName: `${names.lastName}`,
-                                image: `${names.image}`,
-                                Age: `${names.age}`
-                               });
-                               setClickEvent(false)
-                            }} key={names.id}>{names.firstName} {names.lastName}</li>
+                            <div className="output">
+                                <li onClick={() => {
+                                    setClickedOutput({
+                                        Name: `${names.name}`,
+                                        Age: `${names.age}`,
+                                        Bio: `${names.Bio}`
+                                    });
+                                    setClickEvent(false)
+                                    }} key={names.id}>
+                                        <div className="nameOutput">{names.name}</div>
+                                    </li>
+                                <div className="outputIcons">
+                                    <img className="editIcon" src={require('./Images/editing.png')} alt="editing icon"/>
+                                    <img className="deleteIcon" onClick={() => {
+                                        deleteDoc(doc(db, "user", `${names.id}`))
+                                    }} src={require('./Images/delete.png')} alt="editing icon"/>
+                                </div>
+                            </div>
                         ))
                     }
                     {/* <li><a href={"#First"}>First Name</a></li>
@@ -60,9 +78,9 @@ const Header = () => {
             </div>
             <div className="rightArea">
                 {
-                    clickEvent === true ? <AddNew />
+                    clickEvent === true ? <AddNew/>
                     : 
-                    clickOutput.firstName === "" || clickOutput.lastName === "" ? null : <Home firstName={clickOutput.firstName} lastName={clickOutput.lastName} Age={clickOutput.Age} image={clickOutput.image}/>
+                    clickOutput.Name === "" ? null : <Home Name={clickOutput.Name} Age={clickOutput.Age} Bio={clickOutput.Bio} />
 
                     
                 }
@@ -72,9 +90,5 @@ const Header = () => {
      );
 }
 
-export const loaderData = async () => {
-    let res = await fetch("http://localhost:4000/people")
-    return res.json();
-}
  
 export default Header;

@@ -1,12 +1,11 @@
 import About from "./Components/About";
-import Header, { loaderData } from "./Components/Header";
+import Header from "./Components/Header";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Components/Home";
 
 const router = createBrowserRouter([
   {
     element: <Header/>,
-    loader: loaderData,
     children: [
       {
         path: '/',

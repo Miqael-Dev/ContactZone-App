@@ -3,11 +3,11 @@ import ContactView from "./ContactView";
 
 
 
-const Home = ({firstName, lastName, Age, image}) => {
+const Home = ({Name, Age, Bio}) => {
     return (  
         <>
             <div className="addNew">
-                <ContactView firstName={firstName} lastName={lastName} Age={Age} Image={image}/>
+                <ContactView Name={Name} Age={Age} Bio={Bio}/>
             </div>
         </>
     );

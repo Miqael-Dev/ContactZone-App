@@ -90,20 +90,48 @@ body {
   color: black;
 }
 
-.formOutput li {
+.output li {
+  padding: 10px;
+}
+
+.output{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   user-select: none;
   border-radius: 7px;
   width: 100%;
-  padding: 10px;
   background: rgba(222, 222, 222, 0.596);
   list-style: none;
-  font-size: 1.1rem;
+  font-size: 1.03rem;
   margin: 6px 0 6px 0;
   cursor: pointer;
+  font-weight: 400;
 }
 
-.formOutput li:hover {
+.output:hover {
   background: rgba(213, 212, 212, 0.812);
+}
+
+.editIcon, .deleteIcon{
+  margin-right: 15px;
+  z-index: 10;
+  width: 52%;
+  height: 100%;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.outputIcons {
+  display: flex;
+  justify-content: right;
+  width: 20%;
+}
+
+.editIcon:hover, 
+.deleteIcon:hover {
+  background: rgba(151, 151, 151, 0.503);
+  border-radius: 4px;
 }
 
 .name {
@@ -223,10 +251,19 @@ body {
 }
 
 .AddNewBoard {
+  height: 50%;
   width: 40%;
   padding: 30px;
   border-radius: 20px;
   background-color: rgb(236, 231, 231);
+}
+
+.warn {
+  color: red;
+}
+
+.success {
+  color: rgb(35, 35, 240);
 }
 
 .AddNewBoard h2 {
