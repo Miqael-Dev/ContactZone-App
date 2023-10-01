@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 code {
@@ -59,6 +60,7 @@ body {
 
 .output li {
   padding: 10px;
+  width: 100%;
 }
 
 .output{
@@ -139,11 +141,11 @@ body {
 
 .ContactName {
   font-size: 30px;
-  color: rgba(0, 0, 0, 0.84);
+  color: rgb(255, 255, 255)
 }
 
 .ContactAge {
-  color: rgb(104, 103, 103);
+  color: rgb(230, 230, 230);
 }
 
 .ContactView {
@@ -166,10 +168,12 @@ body {
 .Board {
   border-radius: 10px;
   padding: 20px;
-  background: rgb(228, 202, 252);
+  background: #396afc;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2948ff, #396afc);
+  background: linear-gradient(to right, #2948ff, #396afc); 
   display: flex;
   justify-content: center;
-  width: 40%;
+  width: 45%;
 }
 
 .userImage {
@@ -183,7 +187,7 @@ body {
 .Bio {
   margin-top: 10px;
   font-weight: 400;
-  color: rgb(39, 39, 39);
+  color: rgb(209, 208, 208);
 }
 
 .AddNew {
@@ -200,6 +204,17 @@ body {
   padding: 30px;
   border-radius: 20px;
   background-color: rgb(236, 231, 231);
+}
+
+.boardTitle {
+  font-size: 25px;
+  font-weight: 500;
+  color: rgb(67, 67, 67);
+}
+
+.authWarning {
+  width: 100%;
+  height: 20px;
 }
 
 .warn {
@@ -270,4 +285,58 @@ body {
   padding: 5px;
   font-size: 16px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.editPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+.editInputs {
+  height: fit-content;
+  width: 40%;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: rgb(236, 231, 231);
+  display: flex;
+  flex-direction: column;
+}
+
+.editInputs h2 {
+  margin-top: 20px;
+  font-family: 'calibri';
+  font-size: 20px;
+  color: rgb(87, 87, 87);
+  font-weight: 300;
+}
+
+.editInputs input[type="number"] {
+  width: 28%;
+}
+
+.ageInput input {
+  height: 2.5rem;
+}
+
+.editInputs input, 
+.editInputs textarea {
+  outline-color: rgb(153, 72, 228);
+  border-radius: 5px;
+  border: 1px solid rgb(153, 136, 136);
+  padding: 5px;
+  font-size: 16px;
+}
+
+.editInputs button {
+  cursor: pointer;
+  background: rgb(133, 36, 224);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  height: 2.5rem;
+  margin-top: 30px;
 }

@@ -6,7 +6,8 @@ const Edit = ({nameValue, ageValue, bioValue, thisOnChange, onSubmit}) => {
         <>
             <div className="editPage">
                 <div className="editInputs">
-                    <h2>Name:</h2>
+                    <center className="boardTitle">Edit Profile</center>
+                    <h2>Username:</h2>
                     <input value={nameValue}  name="name" onChange={thisOnChange}/>
                     <h2>Age:</h2>
                     <input value={ageValue} type="number" name="age" onChange={thisOnChange} />

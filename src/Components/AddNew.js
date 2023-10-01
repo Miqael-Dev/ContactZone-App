@@ -7,7 +7,7 @@ const AddNew = () => {
     const [action, setAction] = useState();
     const [newData, setNewData] = useState({
         name: "",
-        age: null,
+        age: "",
         bio: ""
     });
     
@@ -30,7 +30,7 @@ const AddNew = () => {
             }
             setNewData({
                 name : "",
-                age: null,
+                age: "",
                 bio: ""
             });
             submit();
@@ -46,9 +46,12 @@ const AddNew = () => {
         <>
             <div className="AddNew" >
                 <div className="AddNewBoard">
-                {action === false ? <p className="success">Added Successfully.</p> : null }
-                {action === true ? <p className="warn">Please fill out the form</p> : null }
-                    <h2>Full name:</h2>
+                    <center className="boardTitle">Add Profile</center>
+                    <p className="authWarning">
+                        {action === false ? <p className="success">Added Successfully.</p> : null }
+                        {action === true ? <p className="warn">Please fill all the spaces</p> : null }
+                    </p>
+                    <h2>Username:</h2>
                     <input className="nameInput" value={newData.name} name="name" onChange={handleChangeTwo} type={"text"} />
                     <h2>Age:</h2>
                     <input className="ageInput" value={newData.age} name="age" onChange={handleChangeTwo} type={"number"} />
