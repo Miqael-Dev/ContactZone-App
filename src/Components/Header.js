@@ -3,6 +3,7 @@ import Home from "./Home";
 import AddNew from "./AddNew";
 import db from "./Firebase"
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
+import Edit from "./Edit";
 
 
 
@@ -17,10 +18,6 @@ const Header = () => {
             }
     })
 
-    const editItem = (names) => {
-        const editRef = doc(db, 'user', `${names.id}`);
-    }
-
     const handleChange = e => {
         e.preventDefault()
         setUserInput(e.target.value.toLowerCase())
@@ -33,12 +30,24 @@ const Header = () => {
     }, [])
 
 
-    const [clickEvent, setClickEvent] = useState(false);
+    const [clickEvent, setClickEvent] = useState("");
+    const [id, setId] = useState("")
     const [clickOutput , setClickedOutput] = useState({
-        Name: "",
-        Age: null,
-        Bio: ""
+        name: "",
+        age: null,
+        bio: "",
     })
+
+    const onChange = (e) => {
+        setClickedOutput(prev => ({...prev, [e.target.name]: e.target.value}));
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const editRef = doc(db, 'user', `${id}`);
+        setDoc(editRef, clickOutput)
+
+    }
     
     return ( 
         <>
@@ -47,7 +56,7 @@ const Header = () => {
                 <div className="form">
                     <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." />
                     <button className="btnAdd" onClick={() => {
-                        setClickEvent(true);
+                        setClickEvent("AddPage");
                     }}>Add</button>
                 </div>
                 <div className="formOutput">
@@ -56,17 +65,23 @@ const Header = () => {
                             <div className="output" key={names.id}>
                                 <li  onClick={() => {
                                     setClickedOutput({
-                                        Name: `${names.name}`,
-                                        Age: `${names.age}`,
-                                        Bio: `${names.Bio}`
+                                        name: `${names.name}`,
+                                        age: `${names.age}`,
+                                        bio: `${names.bio}`
                                     });
-                                    setClickEvent(false);
+                                    setClickEvent("ViewPage");
                                     }} >
                                         <div className="nameOutput">{names.name}</div>
                                     </li>
                                 <div className="outputIcons">
                                     <img className="editIcon" onClick={() => {
-
+                                        setClickedOutput({
+                                            name: `${names.name}`,
+                                            age: Number(names.age),
+                                            bio: `${names.bio}`
+                                        });
+                                        setId(names.id)
+                                        setClickEvent("EditPage")
                                     }} src={require('./Images/editing.png')} alt="editing icon"/>
                                     <img className="deleteIcon" onClick={() => {
                                         deleteDoc(doc(db, "user", `${names.id}`))
@@ -80,12 +95,18 @@ const Header = () => {
             </div>
             <div className="rightArea">
                 {
-                    clickEvent === true ? <AddNew/>
-                    : 
-                    clickOutput.Name === "" ? null : <Home Name={clickOutput.Name} Age={clickOutput.Age} Bio={clickOutput.Bio} />   
+                    clickEvent === "AddPage" ? <AddNew/> : null   
                 }
                 {
-
+                    clickEvent === "ViewPage" ? <Home Name={clickOutput.name} Age={clickOutput.age} Bio={clickOutput.bio}/> : null
+                }
+                {
+                    clickEvent === "EditPage" ? <Edit 
+                    nameValue={clickOutput.name} 
+                    ageValue={clickOutput.age}
+                    bioValue={clickOutput.bio}
+                    onSubmit={onSubmit}
+                    thisOnChange={onChange}/> : null
                 }
             </div>
         </div>
