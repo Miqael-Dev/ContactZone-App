@@ -170,30 +170,6 @@ body {
   height: 100vh;
 }
 
-.ContactImage {
-  border-radius: 10px;
-  width: 9rem;
-  height: 9rem;
-}
-
-.ContactImage img {
-  width: 9rem;
-  height: 9rem;
-  border-radius: 20px;
-  box-shadow: 0 0px 5px 2px grey;
-  background-attachment: fixed;
-}
-
-.ContactInfo {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'Calibri';
-  margin-left: 10px;
-
-}
-
 .ContactName {
   font-size: 30px;
   color: rgba(0, 0, 0, 0.84);
@@ -210,36 +186,37 @@ body {
   height: 100vh;
 }
 
+.ContactInfo {
+  margin-left: 10px;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Calibri';
+}
 
 .Board {
-  align-items: center;
-  height:30%;
-  justify-content: center;
+  border-radius: 10px;
+  padding: 20px;
+  background: rgb(228, 202, 252);
   display: flex;
+  justify-content: center;
+  width: 40%;
 }
 
-.ContactEdit {
-  cursor: pointer;
-  background: rgb(133, 36, 224);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 15px;
-  width: 4rem;
-  height: 2rem;
-  margin-right: 4px;
-  margin-top: 35px;
+.userImage {
+  width:35%;
 }
 
-.ContactDelete {
-  cursor: pointer;
-  width: 5rem;
-  height: 2rem;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  background: rgb(248, 18, 18);
-  margin-top: 35px;
+.userImage img{
+  width: 100%;
+}
+
+.Bio {
+  margin-top: 10px;
+  font-weight: 400;
+  color: rgb(39, 39, 39);
 }
 
 .AddNew {
@@ -251,7 +228,7 @@ body {
 }
 
 .AddNewBoard {
-  height: 50%;
+  height: fit-content;
   width: 40%;
   padding: 30px;
   border-radius: 20px;
@@ -296,8 +273,7 @@ body {
   margin-top: 30px;
 }
 
-.firstname,
-.lastname {
+.nameInput {
   width: 100%;
   height: 2.5rem;
   outline-color: rgba(247, 2, 2, 0.776);
@@ -305,4 +281,26 @@ body {
   border: 1px solid rgb(153, 136, 136);
   padding: 5px;
   font-size: 16px;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+}
+
+.bio lable {
+  margin-top: 20px;
+  font-family: 'calibri';
+  font-size: 20px;
+  color: rgb(87, 87, 87);
+  font-weight: 300;
+}
+
+.bio textarea {
+  outline-color: rgba(247, 2, 2, 0.776);
+  border-radius: 5px;
+  border: 1px solid rgb(153, 136, 136);
+  padding: 5px;
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
