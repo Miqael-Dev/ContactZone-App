@@ -22,39 +22,6 @@ body {
   overflow: hidden;
 }
 
-.navBar {
-  display: flex;
-  justify-content: space-around;
-  padding: 7px;
-  background: rgb(226, 249, 249);
-}
-
-.active {
-  background-color: rgb(243, 78, 78);
-  border-radius: 4px;
-  color: white;
-}
-
-.navLink {
-  display: flex;
-  justify-content: space-between;
-  width: 200px;
-  align-items: center;
-}
-
-.navLink a{
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 3px;
-}
-
-.navLink a:hover {
-  background: rgba(218, 165, 32, 0.513);
-  border-radius: 4px;
-  color: white;
-}
-
 .leftArea {
   float: left;
   background-color: rgb(226, 249, 249);
