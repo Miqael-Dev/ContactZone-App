@@ -4,13 +4,12 @@ import { getFirestore } from "firebase/firestore";
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
-    apiKey: "AIzaSyCDPuspiRJLWF7HMDcVr9tKoG8IahvgHj0",   
-    authDomain: "testify-da596.firebaseapp.com",   
-    projectId: "testify-da596",   
-    storageBucket: "testify-da596.appspot.com",   
-    messagingSenderId: "1079209837185",   
-    appId: "1:1079209837185:web:b2310fd711a50495b18380",   
-    measurementId: "G-HZSSSKHJ3P"
+    apiKey: "AIzaSyDvp-X0wJwOAx08daPL9YbuEwQGcILlT6M",
+    authDomain: "contactzone-2ad8c.firebaseapp.com",
+    projectId: "contactzone-2ad8c",
+    storageBucket: "contactzone-2ad8c.appspot.com",
+    messagingSenderId: "112703384869",
+    appId: "1:112703384869:web:f22f828eea1a493f4e3ecc"
 };
 
 // Initialize Firebase
