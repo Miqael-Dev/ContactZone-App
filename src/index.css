@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 code {
@@ -141,11 +143,11 @@ body {
 
 .ContactName {
   font-size: 30px;
-  color: rgb(255, 255, 255)
+  color: rgb(47, 47, 47)
 }
 
 .ContactAge {
-  color: rgb(230, 230, 230);
+  color: rgb(75, 75, 75);
 }
 
 .ContactView {
@@ -168,9 +170,10 @@ body {
 .Board {
   border-radius: 10px;
   padding: 20px;
-  background: #396afc;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2948ff, #396afc);
-  background: linear-gradient(to right, #2948ff, #396afc); 
+  background: #ffffff;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #2948ff, #396afc);
+  background: linear-gradient(to right, #2948ff, #396afc);  */
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   display: flex;
   justify-content: center;
   width: 45%;
@@ -187,7 +190,7 @@ body {
 .Bio {
   margin-top: 10px;
   font-weight: 400;
-  color: rgb(209, 208, 208);
+  color: rgb(87, 87, 87);
 }
 
 .AddNew {
@@ -202,8 +205,10 @@ body {
   height: fit-content;
   width: 40%;
   padding: 30px;
-  border-radius: 20px;
-  background-color: rgb(236, 231, 231);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
 }
 
 .boardTitle {

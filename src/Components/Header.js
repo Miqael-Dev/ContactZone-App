@@ -2,10 +2,16 @@ import { useState, useEffect } from "react";
 import Home from "./Home";
 import AddNew from "./AddNew";
 import db from "./Firebase"
+import { storage } from "./Firebase";
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { ref, uploadString } from "firebase/storage";
 import Edit from "./Edit";
 
-
+const storageRef = ref(storage, 'first-child');
+const message = 'This is my message.';
+uploadString(storageRef, message).then((snapshot) => {
+  console.log('Uploaded a raw string!');
+});
 
 const Header = () => {
     const [data, setData] = useState([]);
@@ -30,7 +36,7 @@ const Header = () => {
     }, [])
 
 
-    const [clickEvent, setClickEvent] = useState("");
+    const [clickEvent, setClickEvent] = useState("AddPage");
     const [id, setId] = useState("")
     const [clickOutput , setClickedOutput] = useState({
         name: "",
