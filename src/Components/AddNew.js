@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { collection, addDoc} from "firebase/firestore";
 import db from "./Firebase";
-
+import { TextField } from "@mui/material";
 
 const AddNew = () => {
     const [action, setAction] = useState();
@@ -23,7 +23,7 @@ const AddNew = () => {
     
     function handleSubmit(e) {
         e.preventDefault();
-        if(newData.name !== "" && newData.age !== "" && newData.age !== ""){
+        if(newData.name !== "" && newData.age !== "" && newData.bio !== ""){
             const submit = async () => {
                 const collectionRef = collection(db, "user");
                 await addDoc(collectionRef, newData)
@@ -51,14 +51,37 @@ const AddNew = () => {
                         {action === false ? <p className="success">Added Successfully.</p> : null }
                         {action === true ? <p className="warn">Please fill all the spaces</p> : null }
                     </p>
-                    <h2>Username:</h2>
-                    <input className="nameInput" value={newData.name} name="name" onChange={handleChangeTwo} type={"text"} />
-                    <h2>Age:</h2>
-                    <input className="ageInput" value={newData.age} name="age" onChange={handleChangeTwo} type={"number"} />
-                    <div className="bio">
-                        <h2>Bio:</h2>
-                        <textarea rows={5} name="bio" value={newData.bio} placeholder="Enter text here..." onChange={handleChangeTwo}></textarea>
-                    </div>
+                    <TextField 
+                    id="outlined-basic" 
+                    name = "name"
+                    className="nameInput" 
+                    margin="normal"
+                    value={newData.name}
+                    onChange={handleChangeTwo}
+                    label="Username" 
+                    variant="outlined" />
+                    
+                    <TextField 
+                    id="outlined-number"
+                    name="age" 
+                    className="ageInput" 
+                    margin="normal"
+                    value={newData.age}
+                    onChange={handleChangeTwo}
+                    label="Age" 
+                    type="number" />
+
+                    <TextField
+                    id="outlined-multiline-static"
+                    label="Bio"
+                    name="bio"
+                    className="bioBox"
+                    margin="normal"
+                    value={newData.bio}
+                    onChange={handleChangeTwo}
+                    multiline
+                    rows={5}
+                    placeholder="Enter text here..." />
                     <div className="btns">
                         <button onClick={handleSubmit} className="AddBtn">Add</button>
                     </div>

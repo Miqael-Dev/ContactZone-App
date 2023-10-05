@@ -38,14 +38,8 @@ body {
   border-bottom: 1px solid rgb(183, 182, 182);
 } 
   
-#searchInput {
-  margin-top: 10px;
+.searchInput {
   width: 70%;
-  height: 2.5rem;
-  outline-color: rgba(247, 2, 2, 0.776);
-  border-radius: 5px;
-  border: 1px solid rgb(153, 136, 136);
-  padding: 5px;
   font-size: 16px;
 }
 
@@ -53,6 +47,8 @@ body {
   margin-top: 10px;
   width: 100%;
   height: 82%;
+  overflow-x: hidden;
+  
 }
 
 .formOutput a {
@@ -239,12 +235,9 @@ body {
 }
 
 .ageInput {
-  width: 28%;
-  height: 2.5rem;
+  margin-top: 50px;
+  width: 40%;
   outline-color: rgba(247, 2, 2, 0.776);
-  border-radius: 5px;
-  border: 1px solid rgb(153, 136, 136);
-  padding: 5px;
   font-size: 16px;
 }
 
@@ -262,11 +255,9 @@ body {
 
 .nameInput {
   width: 100%;
-  height: 2.5rem;
   outline-color: rgba(247, 2, 2, 0.776);
   border-radius: 5px;
   border: 1px solid rgb(153, 136, 136);
-  padding: 5px;
   font-size: 16px;
 }
 
@@ -283,13 +274,9 @@ body {
   font-weight: 300;
 }
 
-.bio textarea {
-  outline-color: rgba(247, 2, 2, 0.776);
-  border-radius: 5px;
-  border: 1px solid rgb(153, 136, 136);
-  padding: 5px;
+.bioBox {
   font-size: 16px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  width: 100%;
 }
 
 .editPage {
@@ -309,31 +296,6 @@ body {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   display: flex;
   flex-direction: column;
-}
-
-.editInputs h2 {
-  margin-top: 20px;
-  font-family: 'calibri';
-  font-size: 20px;
-  color: rgb(87, 87, 87);
-  font-weight: 300;
-}
-
-.editInputs input[type="number"] {
-  width: 28%;
-}
-
-.ageInput input {
-  height: 2.5rem;
-}
-
-.editInputs input, 
-.editInputs textarea {
-  outline-color: rgb(153, 72, 228);
-  border-radius: 5px;
-  border: 1px solid rgb(153, 136, 136);
-  padding: 5px;
-  font-size: 16px;
 }
 
 .editInputs button {

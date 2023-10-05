@@ -6,6 +6,7 @@ import { storage } from "./Firebase";
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { ref, uploadString } from "firebase/storage";
 import Edit from "./Edit";
+import { TextField } from "@mui/material";
 
 const storageRef = ref(storage, 'first-child');
 const message = 'This is my message.';
@@ -35,7 +36,7 @@ const Header = () => {
         })
     }, [])
 
-
+    const [action, setAction] = useState()
     const [clickEvent, setClickEvent] = useState("AddPage");
     const [id, setId] = useState("")
     const [clickOutput , setClickedOutput] = useState({
@@ -50,9 +51,13 @@ const Header = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const editRef = doc(db, 'user', `${id}`);
-        setDoc(editRef, clickOutput)
-
+        if(clickOutput.name !== "" && clickOutput.age !== "" && clickOutput.bio !== ""){
+            const editRef = doc(db, 'user', `${id}`);
+            setDoc(editRef, clickOutput);
+            setAction(false)
+        }else {
+            setAction(true)
+        }  
     }
     
     return ( 
@@ -60,7 +65,8 @@ const Header = () => {
         <div>
             <div className="leftArea">
                 <div className="form">
-                    <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." />
+                    {/* <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." /> */}
+                    <TextField id="outlined-search" className="searchInput" size="small" onChange={handleChange} label="Search" type="search" />
                     <button className="btnAdd" onClick={() => {
                         setClickEvent("AddPage");
                     }}>Add</button>
@@ -112,7 +118,8 @@ const Header = () => {
                     ageValue={clickOutput.age}
                     bioValue={clickOutput.bio}
                     onSubmit={onSubmit}
-                    thisOnChange={onChange}/> : null
+                    thisOnChange={onChange}
+                    action={action} /> : null
                 }
             </div>
         </div>
