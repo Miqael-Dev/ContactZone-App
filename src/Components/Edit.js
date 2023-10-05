@@ -18,6 +18,7 @@ const Edit = ({nameValue, ageValue, bioValue, thisOnChange, onSubmit, action}) =
                     name = "name"
                     className="nameInput" 
                     margin="normal"
+                    size="small"
                     value={nameValue}
                     onChange={thisOnChange}
                     label="Username" 
@@ -28,6 +29,7 @@ const Edit = ({nameValue, ageValue, bioValue, thisOnChange, onSubmit, action}) =
                     name="age" 
                     className="ageInput" 
                     margin="normal"
+                    size="small"
                     value={ageValue}
                     onChange={thisOnChange}
                     label="Age" 
@@ -39,6 +41,7 @@ const Edit = ({nameValue, ageValue, bioValue, thisOnChange, onSubmit, action}) =
                     name="bio"
                     className="bioBox"
                     margin="normal"
+                    size="small"
                     value={bioValue}
                     onChange={thisOnChange}
                     multiline

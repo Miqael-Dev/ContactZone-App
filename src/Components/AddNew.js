@@ -56,6 +56,7 @@ const AddNew = () => {
                     name = "name"
                     className="nameInput" 
                     margin="normal"
+                    size="small"
                     value={newData.name}
                     onChange={handleChangeTwo}
                     label="Username" 
@@ -66,6 +67,7 @@ const AddNew = () => {
                     name="age" 
                     className="ageInput" 
                     margin="normal"
+                    size="small"
                     value={newData.age}
                     onChange={handleChangeTwo}
                     label="Age" 
@@ -77,6 +79,7 @@ const AddNew = () => {
                     name="bio"
                     className="bioBox"
                     margin="normal"
+                    size="small"
                     value={newData.bio}
                     onChange={handleChangeTwo}
                     multiline

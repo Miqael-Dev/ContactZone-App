@@ -7,6 +7,8 @@ import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firesto
 import { ref, uploadString } from "firebase/storage";
 import Edit from "./Edit";
 import { TextField } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const storageRef = ref(storage, 'first-child');
 const message = 'This is my message.';
@@ -106,6 +108,11 @@ const Header = () => {
                 <div className="name">Miqael-<span className="underline"><span style={{color:"red"}}>D</span>ev</span></div>
             </div>
             <div className="rightArea">
+                <div className="nav600">
+                    <FontAwesomeIcon icon={faCirclePlus}/>
+                    <input type="search" placeholder="Search..." className="searchInput600"/>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </div>
                 {
                     clickEvent === "AddPage" ? <AddNew/> : null   
                 }

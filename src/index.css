@@ -26,6 +26,7 @@ body {
 }
 
 .leftArea {
+  display: none;
   float: left;
   background-color: rgb(226, 249, 249);
   height: 100vh;
@@ -132,9 +133,10 @@ body {
 }
 
 .rightArea {
+  overflow-y: scroll;
   float: right;
-  width: 74%;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
 }
 
 .ContactName {
@@ -165,14 +167,12 @@ body {
 
 .Board {
   border-radius: 10px;
-  padding: 20px;
-  background: #ffffff;  /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(to right, #2948ff, #396afc);
-  background: linear-gradient(to right, #2948ff, #396afc);  */
+  padding: 10px;
+  background: #ffffff; 
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   display: flex;
   justify-content: center;
-  width: 45%;
+  width: 60vh;
 }
 
 .userImage {
@@ -191,15 +191,17 @@ body {
 
 .AddNew {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.AddNewBoard {
+.AddNewBoard, 
+.editInputs {
   height: fit-content;
-  width: 57vh;
+  width: 48dvh;
+  height: fit-content;
   padding: 30px;
   border-radius: 10px;
   background-color: rgb(249, 249, 249);
@@ -226,22 +228,14 @@ body {
   color: rgb(35, 35, 240);
 }
 
-.AddNewBoard h2 {
-  margin-top: 20px;
-  font-family: 'calibri';
-  font-size: 20px;
-  color: rgb(87, 87, 87);
-  font-weight: 300;
-}
-
 .ageInput {
-  margin-top: 50px;
   width: 40%;
-  outline-color: rgba(247, 2, 2, 0.776);
-  font-size: 16px;
+  top: 10px;
+  bottom: 10px;
 }
 
-.AddBtn {
+.AddBtn,
+.editInputs button {
   cursor: pointer;
   background: rgb(133, 36, 224);
   border: none;
@@ -255,10 +249,6 @@ body {
 
 .nameInput {
   width: 100%;
-  outline-color: rgba(247, 2, 2, 0.776);
-  border-radius: 5px;
-  border: 1px solid rgb(153, 136, 136);
-  font-size: 16px;
 }
 
 .bio {
@@ -266,15 +256,9 @@ body {
   flex-direction: column;
 }
 
-.bio lable {
-  margin-top: 20px;
-  font-family: 'calibri';
-  font-size: 20px;
-  color: rgb(87, 87, 87);
-  font-weight: 300;
-}
 
 .bioBox {
+  top: 20px;
   font-size: 16px;
   width: 100%;
 }
@@ -284,27 +268,39 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
 }
 
+.nav600 {
+  display: none;
+}
+
+@media only screen and (max-width: 1000px){
+
+}
+
+@media only screen and (max-width: 600px) {
+  .nav600 {
+    justify-content: right;
+    position: absolute;
+    display: block;
+    padding: 10px;
+  }
+
+  .AddNewBoard, 
 .editInputs {
-  height: fit-content;
-  width: 40%;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: rgb(240, 240, 240);
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  display: flex;
-  flex-direction: column;
+  width: 30dvh;
+  padding: 20px;
 }
 
-.editInputs button {
-  cursor: pointer;
-  background: rgb(133, 36, 224);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  height: 2.5rem;
-  margin-top: 30px;
+  .searchInput600 {
+    width: 11rem;
+    outline: none;
+    height: 34px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    border: 1px solid rgb(183, 181, 181);
+    position: absolute;
+    display: block;
+  }
 }
