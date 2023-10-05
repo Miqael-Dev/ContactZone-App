@@ -26,12 +26,11 @@ body {
 }
 
 .leftArea {
-  display: none;
   float: left;
   background-color: rgb(226, 249, 249);
   height: 100vh;
   padding: 7px;
-  width: 23%;
+  width: 40vh;
 }
 
 .form {
@@ -133,9 +132,7 @@ body {
 }
 
 .rightArea {
-  overflow-y: scroll;
-  float: right;
-  width: 100%;
+  overflow-y: scroll;;
   height: 100dvh;
 }
 
@@ -146,13 +143,6 @@ body {
 
 .ContactAge {
   color: rgb(75, 75, 75);
-}
-
-.ContactView {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .ContactInfo {
@@ -189,7 +179,9 @@ body {
   color: rgb(87, 87, 87);
 }
 
-.AddNew {
+.AddNew,
+.editPage,
+.ContactView {
   width: 100%;
   height: 100dvh;
   display: flex;
@@ -263,44 +255,122 @@ body {
   width: 100%;
 }
 
-.editPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .nav600 {
   display: none;
 }
 
-@media only screen and (max-width: 1000px){
 
+.name600 {
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
-  .nav600 {
-    justify-content: right;
-    position: absolute;
-    display: block;
-    padding: 10px;
+  .rightArea {
+    width: 100%;
   }
 
-  .AddNewBoard, 
-.editInputs {
-  width: 30dvh;
-  padding: 20px;
-}
+  .leftArea{
+    display: none;
+  }
+
+  .nav600 {
+    justify-content: space-between;
+    display: flex;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+  }
+
+  .search600 {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .searchBtn {
+    right: 30px;
+    position: absolute;
+    font-size: 20px;
+    color: rgb(105, 106, 110);
+  }
 
   .searchInput600 {
-    width: 11rem;
+    width: 13rem;
     outline: none;
-    height: 34px;
-    border-radius: 20px;
+    height: 40px;
+    border-radius: 5px;
     border: none;
     padding: 10px;
     border: 1px solid rgb(183, 181, 181);
-    position: absolute;
     display: block;
+  }
+
+  .addBtn {
+    color: rgb(129, 127, 130);
+    font-size: 38px;
+  }
+
+  .AddNewBoard, 
+  .editInputs {
+    width: 44dvh;
+    padding: 20px;
+  }
+
+  .name600 {
+    font-size: 21px;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .underline600{
+    margin-top: -3px;
+    border-top: 3px solid red;
+  }
+
+  .editIcon, .deleteIcon {
+    width: 70%;
+    margin-right: 10px;
+  }
+
+  .formOutput600 {
+    display: block;
+    width: 13rem;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid rgb(185, 185, 185);
+    padding: 4px;
+    top: 60px;
+    position: absolute;
+    max-height: 70vh;
+    overflow-x: hidden;
+  }
+
+  .output {
+    font-size: 0.9rem;
+  }
+
+  .Board {
+    width: 80%;
+  }
+
+  .ContactName {
+    font-size: 20px;
+  }
+
+  .ContactAge {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  
+  .Bio {
+    font-size: 14px;
+  }
+
+  .authWarning p {
+    font-size: 13px;
   }
 }

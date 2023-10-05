@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import Home from "./Home";
 import AddNew from "./AddNew";
 import db from "./Firebase"
-import { storage } from "./Firebase";
+// import { storage } from "./Firebase";
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
-import { ref, uploadString } from "firebase/storage";
+// import { ref, uploadString } from "firebase/storage";
 import Edit from "./Edit";
 import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const storageRef = ref(storage, 'first-child');
-const message = 'This is my message.';
-uploadString(storageRef, message).then((snapshot) => {
-  console.log('Uploaded a raw string!');
-});
+// const storageRef = ref(storage, 'first-child');
+// const message = 'This is my message.';
+// uploadString(storageRef, message).then((snapshot) => {
+//   console.log('Uploaded a raw string!');
+// });
 
 const Header = () => {
     const [data, setData] = useState([]);
@@ -74,7 +74,7 @@ const Header = () => {
                     }}>Add</button>
                 </div>
                 <div className="formOutput">
-                    {
+                    {  
                         filter.map(names => (
                             <div className="output" key={names.id}>
                                 <li  onClick={() => {
@@ -109,10 +109,51 @@ const Header = () => {
             </div>
             <div className="rightArea">
                 <div className="nav600">
-                    <FontAwesomeIcon icon={faCirclePlus}/>
-                    <input type="search" placeholder="Search..." className="searchInput600"/>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    <FontAwesomeIcon className="addBtn" onClick={() => {
+                        setClickEvent("AddPage");
+                        setUserInput("")
+                    }} icon={faCirclePlus}/>
+                    <div className="search600">
+                        <input type="text" placeholder="Search..." className="searchInput600" value={userInput} onChange={handleChange} />
+                        <FontAwesomeIcon className="searchBtn" icon={faMagnifyingGlass} />
+                        { userInput === "" ? null :    
+                            <div id="form600" className="formOutput600">
+                                {
+                                    filter.map(names => (
+                                        <div className="output" key={names.id}>
+                                            <li  onClick={() => {
+                                                setUserInput("")
+                                                setClickedOutput({
+                                                    name: `${names.name}`,
+                                                    age: `${names.age}`,
+                                                    bio: `${names.bio}`
+                                                });
+                                                setClickEvent("ViewPage");
+                                                }} >
+                                                    <div className="nameOutput">{names.name}</div>
+                                                </li>
+                                            <div className="outputIcons">
+                                                <img className="editIcon" onClick={() => {
+                                                    setClickedOutput({
+                                                        name: `${names.name}`,
+                                                        age: Number(names.age),
+                                                        bio: `${names.bio}`
+                                                    });
+                                                    setId(names.id)
+                                                    setClickEvent("EditPage")
+                                                }} src={require('./Images/editing.png')} alt="editing icon"/>
+                                                <img className="deleteIcon" onClick={() => {
+                                                    deleteDoc(doc(db, "user", `${names.id}`))
+                                                }} src={require('./Images/delete.png')} alt="editing icon"/>
+                                            </div>
+                                        </div>
+                                    )) 
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
+                <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
                 {
                     clickEvent === "AddPage" ? <AddNew/> : null   
                 }

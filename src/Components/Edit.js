@@ -13,7 +13,7 @@ const Edit = ({nameValue, ageValue, bioValue, thisOnChange, onSubmit, action}) =
                         {action === false ? <p className="success">Edited Successfully.</p> : null }
                         {action === true ? <p className="warn">Please fill all the spaces</p> : null }
                     </p>
-                <TextField 
+                    <TextField 
                     id="outlined-basic" 
                     name = "name"
                     className="nameInput" 
