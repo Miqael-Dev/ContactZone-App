@@ -141,6 +141,7 @@ const Header = () => {
                                                     });
                                                     setId(names.id)
                                                     setClickEvent("EditPage")
+                                                    setUserInput("")
                                                 }} src={require('./Images/editing.png')} alt="editing icon"/>
                                                 <img className="deleteIcon" onClick={() => {
                                                     deleteDoc(doc(db, "user", `${names.id}`))
