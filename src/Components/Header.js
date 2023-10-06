@@ -64,7 +64,7 @@ const Header = () => {
     
     return ( 
         <>
-        <div>
+        <div className="mainContainer">
             <div className="leftArea">
                 <div className="form">
                     {/* <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." /> */}

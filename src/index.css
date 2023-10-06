@@ -21,12 +21,15 @@ code {
     monospace;
 }
 
+.mainContainer {
+  display: flex;
+}
+
 .leftArea {
-  float: left;
   background-color: rgb(226, 249, 249);
   height: 100dvh;
   padding: 7px;
-  width: 25%;
+  width: 60vh;
 }
 
 .form {
@@ -128,8 +131,7 @@ code {
 }
 
 .rightArea {
-  float: right;
-  width: 75%;
+  width: 100%;
   height: 100vh;
 }
 
@@ -259,7 +261,7 @@ code {
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 610px) {
   .rightArea {
     width: 100%;
     height: 100dvh;
@@ -312,6 +314,7 @@ code {
   .addBtn {
     color: rgb(129, 127, 130);
     font-size: 38px;
+    cursor: pointer;
   }
 
   .AddNewBoard, 
