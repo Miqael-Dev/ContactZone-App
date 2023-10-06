@@ -153,7 +153,6 @@ const Header = () => {
                         }
                     </div>
                 </div>
-                <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
                 {
                     clickEvent === "AddPage" ? <AddNew/> : null   
                 }
@@ -169,6 +168,7 @@ const Header = () => {
                     thisOnChange={onChange}
                     action={action} /> : null
                 }
+                <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
             </div>
         </div>
         </>

@@ -21,16 +21,12 @@ code {
     monospace;
 }
 
-body {
-  overflow: hidden;
-}
-
 .leftArea {
   float: left;
   background-color: rgb(226, 249, 249);
-  height: 100vh;
+  height: 100dvh;
   padding: 7px;
-  width: 40vh;
+  width: 25%;
 }
 
 .form {
@@ -132,8 +128,9 @@ body {
 }
 
 .rightArea {
-  overflow-y: scroll;;
-  height: 100dvh;
+  float: right;
+  width: 75%;
+  height: 100vh;
 }
 
 .ContactName {
@@ -182,8 +179,9 @@ body {
 .AddNew,
 .editPage,
 .ContactView {
+  overflow-y: scroll;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,9 +189,7 @@ body {
 
 .AddNewBoard, 
 .editInputs {
-  height: fit-content;
-  width: 48dvh;
-  height: fit-content;
+  width: 48vh;
   padding: 30px;
   border-radius: 10px;
   background-color: rgb(249, 249, 249);
@@ -265,19 +261,24 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+  
   .rightArea {
     width: 100%;
+    overflow-y: scroll;
   }
 
   .leftArea{
     display: none;
   }
 
+  .AddNew {
+    height: fit-content;
+  }
+
   .nav600 {
     justify-content: space-between;
     display: flex;
-    padding: 20px;
-    position: absolute;
+    padding: 15px;
     width: 100%;
   }
 
@@ -289,7 +290,7 @@ body {
 
   .searchBtn {
     right: 30px;
-    position: absolute;
+    position: relative;
     font-size: 20px;
     color: rgb(105, 106, 110);
   }
@@ -312,9 +313,13 @@ body {
 
   .AddNewBoard, 
   .editInputs {
-    width: 44dvh;
-    padding: 20px;
+    border: none;
+    background: white;
+    width: 100%;
+    padding: 20px 60px 0 60px;
+    box-shadow: none;
   }
+
 
   .name600 {
     font-size: 21px;
@@ -322,8 +327,7 @@ body {
     width: 100%;
     justify-content: center;
     display: flex;
-    position: absolute;
-    bottom: 0;
+    margin-top: 8vh;
   }
 
   .underline600{
