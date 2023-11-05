@@ -278,6 +278,31 @@ code {
   display: none;
 }
 
+.errorPage {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorImage{
+  width: 65dvh;
+}
+
+.errorImage img {
+  width: 100%;
+}
+
+.linkback {
+  text-decoration: none;
+  background: #1B2E35;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
 @media only screen and (max-width: 610px) {
   .rightArea {
     width: 100%;
@@ -400,5 +425,9 @@ code {
 
   .authWarning p {
     font-size: 13px;
+  }
+
+  .errorImage {
+    width: 50vh;
   }
 }

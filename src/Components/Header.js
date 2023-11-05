@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import AddNew from "./AddNew";
 import db from "./Firebase"
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
@@ -7,29 +8,32 @@ import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ContactView from "./ContactView";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+    let { userID } = useParams();
+    const [con, setCon] = useState()
     const [data, setData] = useState([]);
     const [userInput, setUserInput] = useState("");
-    let filter = data.filter(names => {
+    const filter = data.filter(names => {
         if(userInput === ""){
             return null;
         }else {
-        return names.name.toLowerCase().includes(userInput)
-            }
-    })
-
+            return names.name.toLowerCase().includes(userInput)
+        }
+    });
+    
     const handleChange = e => {
-        e.preventDefault()
-        setUserInput(e.target.value.toLowerCase())
+        e.preventDefault();
+        setUserInput(e.target.value.toLowerCase());
     }
-
     useEffect(() => {
         onSnapshot(collection(db, "user"), (snapshot) => {
             setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
         })
     }, [])
 
+    console.log(userID)
     const [action, setAction] = useState()
     const [clickEvent, setClickEvent] = useState("AddPage");
     const [id, setId] = useState("")
@@ -70,17 +74,19 @@ const Header = () => {
                     {  
                         filter.map(names => (
                             <div className="output" key={names.id}>
-                                <li  onClick={() => {
-                                    setClickedOutput({
-                                        name: `${names.name}`,
-                                        age: `${names.age}`,
-                                        bio: `${names.bio}`,
-                                        id: `${names.id}`
-                                    });
-                                    setClickEvent("ViewPage");
-                                    }} >
-                                        <div className="nameOutput">{names.name}</div>
+                                <Link to={names.id }>
+                                    <li  onClick={() => {
+                                        setClickedOutput({
+                                            name: `${names.name}`,
+                                            age: `${names.age}`,
+                                            bio: `${names.bio}`,
+                                            id: `${names.id}`
+                                        });
+                                        setClickEvent("ViewPage");
+                                        }} >
+                                            <div className="nameOutput">{names.name}</div>
                                     </li>
+                                </Link>
                             </div>
                         ))
                     }
@@ -101,17 +107,19 @@ const Header = () => {
                                 {
                                     filter.map(names => (
                                         <div className="output" key={names.id}>
-                                            <li  onClick={() => {
-                                                setUserInput("")
-                                                setClickedOutput({
-                                                    name: `${names.name}`,
-                                                    age: `${names.age}`,
-                                                    bio: `${names.bio}`
-                                                });
-                                                setClickEvent("ViewPage");
-                                                }} >
-                                                    <div className="nameOutput">{names.name}</div>
+                                            <Link to={"contact"}>
+                                                <li  onClick={() => {
+                                                    setUserInput("")
+                                                    setClickedOutput({
+                                                        name: `${names.name}`,
+                                                        age: `${names.age}`,
+                                                        bio: `${names.bio}`
+                                                    });
+                                                    setClickEvent("ViewPage");
+                                                    }} >
+                                                        <div className="nameOutput">{names.name}</div>
                                                 </li>
+                                            </Link>
                                         </div>
                                     )) 
                                 }

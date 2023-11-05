@@ -1,21 +1,24 @@
-import Header from "./Components/Header";
+import Header, { Con } from "./Components/Header";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactView from "./Components/ContactView";
 import Edit from "./Components/Edit";
 import AddNew from "./Components/AddNew";
+import Error from "./Components/Error";
+import Test from "./Components/Test";
 
 const router = createBrowserRouter([
   {
     element: <Header/>,
     path : "/",
+    errorElement: <Error/>,
     children: [
       {
         path: 'add',
         element: <AddNew/>
       },
       {
-        path: 'contact',
-        element: <ContactView/>
+        path: ':userID',
+        element: <Test/>
       },
       {
         path: 'edit',

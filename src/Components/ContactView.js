@@ -1,8 +1,8 @@
+import { useParams } from 'react-router';
 import db from './Firebase'
 import { deleteDoc, doc } from 'firebase/firestore';
 
 const ContactView = ({Name, Age , Bio, Output, Id, Event}) => {
-
     return (  
         <div className="ContactView">
             <div className="Board">
@@ -23,7 +23,7 @@ const ContactView = ({Name, Age , Bio, Output, Id, Event}) => {
                                 age: Number(Age),
                                 bio: `${Bio}`
                             });
-                            Id(Output.Id)
+                            Id(Output.id)
                             Event("EditPage")
                         }}>
                         <img className="editIcon" src={require('./Images/editing.png')} alt="editing icon"/>
