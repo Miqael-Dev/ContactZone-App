@@ -1,7 +1,5 @@
-import About from "./Components/About";
 import Header from "./Components/Header";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./Components/Home";
 import ContactView from "./Components/ContactView";
 import Edit from "./Components/Edit";
 import AddNew from "./Components/AddNew";

@@ -1,21 +1,12 @@
 import { useState, useEffect } from "react";
-import Home from "./Home";
 import AddNew from "./AddNew";
 import db from "./Firebase"
-// import { storage } from "./Firebase";
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
-// import { ref, uploadString } from "firebase/storage";
 import Edit from "./Edit";
 import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ContactView from "./ContactView";
-
-// const storageRef = ref(storage, 'first-child');
-// const message = 'This is my message.';
-// uploadString(storageRef, message).then((snapshot) => {
-//   console.log('Uploaded a raw string!');
-// });
 
 const Header = () => {
     const [data, setData] = useState([]);
