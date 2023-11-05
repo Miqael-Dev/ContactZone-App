@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AddNew from "./AddNew";
 import db from "./Firebase"
-import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 import Edit from "./Edit";
 import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

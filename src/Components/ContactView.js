@@ -1,11 +1,7 @@
-import { useState } from 'react';
 import db from './Firebase'
 import { deleteDoc, doc } from 'firebase/firestore';
 
 const ContactView = ({Name, Age , Bio, Output, Id, Event}) => {
-    const [clickOutput, setClickedOutput] = useState({
-
-    })
 
     return (  
         <div className="ContactView">
