@@ -9,6 +9,7 @@ import Edit from "./Edit";
 import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import ContactView from "./ContactView";
 
 // const storageRef = ref(storage, 'first-child');
 // const message = 'This is my message.';
@@ -45,6 +46,7 @@ const Header = () => {
         name: "",
         age: null,
         bio: "",
+        id: ""
     })
 
     const onChange = (e) => {
@@ -81,26 +83,13 @@ const Header = () => {
                                     setClickedOutput({
                                         name: `${names.name}`,
                                         age: `${names.age}`,
-                                        bio: `${names.bio}`
+                                        bio: `${names.bio}`,
+                                        id: `${names.id}`
                                     });
                                     setClickEvent("ViewPage");
                                     }} >
                                         <div className="nameOutput">{names.name}</div>
                                     </li>
-                                <div className="outputIcons">
-                                    <img className="editIcon" onClick={() => {
-                                        setClickedOutput({
-                                            name: `${names.name}`,
-                                            age: Number(names.age),
-                                            bio: `${names.bio}`
-                                        });
-                                        setId(names.id)
-                                        setClickEvent("EditPage")
-                                    }} src={require('./Images/editing.png')} alt="editing icon"/>
-                                    <img className="deleteIcon" onClick={() => {
-                                        deleteDoc(doc(db, "user", `${names.id}`))
-                                    }} src={require('./Images/delete.png')} alt="editing icon"/>
-                                </div>
                             </div>
                         ))
                     }
@@ -132,21 +121,6 @@ const Header = () => {
                                                 }} >
                                                     <div className="nameOutput">{names.name}</div>
                                                 </li>
-                                            <div className="outputIcons">
-                                                <img className="editIcon" onClick={() => {
-                                                    setClickedOutput({
-                                                        name: `${names.name}`,
-                                                        age: Number(names.age),
-                                                        bio: `${names.bio}`
-                                                    });
-                                                    setId(names.id)
-                                                    setClickEvent("EditPage")
-                                                    setUserInput("")
-                                                }} src={require('./Images/editing.png')} alt="editing icon"/>
-                                                <img className="deleteIcon" onClick={() => {
-                                                    deleteDoc(doc(db, "user", `${names.id}`))
-                                                }} src={require('./Images/delete.png')} alt="editing icon"/>
-                                            </div>
                                         </div>
                                     )) 
                                 }
@@ -158,7 +132,14 @@ const Header = () => {
                     clickEvent === "AddPage" ? <AddNew/> : null   
                 }
                 {
-                    clickEvent === "ViewPage" ? <Home Name={clickOutput.name} Age={clickOutput.age} Bio={clickOutput.bio}/> : null
+                    clickEvent === "ViewPage" ? <ContactView 
+                    Name={clickOutput.name} 
+                    Age={clickOutput.age} 
+                    Bio={clickOutput.bio}
+                    Event={setClickEvent}
+                    Output={setClickedOutput}
+                    Id={setId}
+                    /> : null
                 }
                 {
                     clickEvent === "EditPage" ? <Edit 

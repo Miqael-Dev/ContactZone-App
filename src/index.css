@@ -79,23 +79,34 @@ code {
   background: rgba(213, 212, 212, 0.812);
 }
 
-.editIcon, .deleteIcon{
-  margin-right: 15px;
-  z-index: 10;
-  width: 52%;
-  height: 100%;
+.editBtn, .deleteBtn {
+  width: 24%;
+  display: flex;
+  align-items: center;
+  color: rgb(68, 68, 68);
+  background: rgb(207, 207, 207);
+  padding: 8px;
+  border-radius: 5px;
+  margin: 4px;
   cursor: pointer;
-  padding: 4px;
+}
+
+.editBtn p, .deleteBtn p {
+  margin-left: 5px;
+}
+
+.editIcon, .deleteIcon{
+  width: 30%;
 }
 
 .outputIcons {
   display: flex;
-  justify-content: right;
-  width: 20%;
+  justify-content: center;
+  margin-left: 40px;
 }
 
-.editIcon:hover, 
-.deleteIcon:hover {
+.editBtn:hover, 
+.deleteBtn:hover {
   background: rgba(151, 151, 151, 0.503);
   border-radius: 4px;
 }
@@ -155,13 +166,19 @@ code {
 }
 
 .Board {
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 60vh;
   padding: 10px;
   background: #ffffff; 
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 10px;
+
+}
+
+.Board-Info {
   display: flex;
-  justify-content: center;
-  width: 60vh;
 }
 
 .userImage {
@@ -346,10 +363,6 @@ code {
     border-top: 3px solid red;
   }
 
-  .editIcon, .deleteIcon {
-    width: 70%;
-    margin-right: 10px;
-  }
 
   .formOutput600 {
     display: block;
