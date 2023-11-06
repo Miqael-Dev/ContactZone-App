@@ -4,7 +4,6 @@ import ContactView from "./Components/ContactView";
 import Edit from "./Components/Edit";
 import AddNew from "./Components/AddNew";
 import Error from "./Components/Error";
-import Test from "./Components/Test";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: ':userID',
-        element: <Test/>
+        element: <ContactView/>
       },
       {
         path: 'edit',

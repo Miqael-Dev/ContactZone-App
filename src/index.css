@@ -79,15 +79,25 @@ code {
   background: rgba(213, 212, 212, 0.812);
 }
 
+.editBtn{
+  width: 60px;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 4px;
+}
+
+.deleteBtn {
+  width: 90px;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 4px
+}
+
 .editBtn, .deleteBtn {
-  width: 24%;
   display: flex;
   align-items: center;
   color: rgb(68, 68, 68);
   background: rgb(207, 207, 207);
-  padding: 8px;
-  border-radius: 5px;
-  margin: 4px;
   cursor: pointer;
 }
 
@@ -102,7 +112,7 @@ code {
 .outputIcons {
   display: flex;
   justify-content: center;
-  margin-left: 40px;
+  width: 100%;
 }
 
 .editBtn:hover, 
