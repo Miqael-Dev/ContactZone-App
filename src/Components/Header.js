@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     let { userID } = useParams();
-    const [con, setCon] = useState()
+    const [con, setCon] = useState(false)
     const [data, setData] = useState([]);
     const [userInput, setUserInput] = useState("");
     const filter = data.filter(names => {
@@ -30,13 +30,14 @@ const Header = () => {
     useEffect(() => {
         onSnapshot(collection(db, "user"), (snapshot) => {
             setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+            setCon(true);
         })
     }, [])
+    console.log(con)
 
-    console.log(userID)
     const [action, setAction] = useState()
-    const [clickEvent, setClickEvent] = useState("AddPage");
-    const [id, setId] = useState("")
+    const [clickEvent, setClickEvent] = useState("");
+    const [id, setId] = useState("");
     const [clickOutput , setClickedOutput] = useState({
         name: "",
         age: null,
@@ -44,10 +45,39 @@ const Header = () => {
         id: ""
     })
 
+    const [output, setOutput] = useState()
+    const trigger = () => {
+        for(let a = 0; a <= data.length -1; a++){
+            if(data[a].id.includes(userID))
+            {
+                setClickedOutput({
+                    name: `${data[a].name}`,
+                    age: `${data[a].age}`,
+                    bio: `${data[a].bio}`
+                });
+                setClickEvent("ViewPage");
+            }
+        }
+        
+    }
+    
+    useEffect(() => {
+        if(con === true) {
+            let user = data.find(users => users.id === userID);
+            setOutput(user)
+            setClickedOutput({
+                name: `${user.name}`,
+                age: `${user.age}`,
+                bio: `${user.bio}`
+            });
+            setClickEvent("ViewPage");
+        }
+    }, [data])
+
+
     const onChange = (e) => {
         setClickedOutput(prev => ({...prev, [e.target.name]: e.target.value}));
     }
-
     const onSubmit = (e) => {
         e.preventDefault();
         if(clickOutput.name !== "" && clickOutput.age !== "" && clickOutput.bio !== ""){
@@ -61,7 +91,7 @@ const Header = () => {
     
     return ( 
         <>
-        <div className="mainContainer">
+        <div className="mainContainer" on>
             <div className="leftArea">
                 <div className="form">
                     {/* <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." /> */}
@@ -74,16 +104,10 @@ const Header = () => {
                     {  
                         filter.map(names => (
                             <div className="output" key={names.id}>
-                                <Link to={names.id }>
+                                <Link to={names.id}>
                                     <li  onClick={() => {
-                                        setClickedOutput({
-                                            name: `${names.name}`,
-                                            age: `${names.age}`,
-                                            bio: `${names.bio}`,
-                                            id: `${names.id}`
-                                        });
-                                        setClickEvent("ViewPage");
-                                        }} >
+                                        trigger()
+                                    }} >
                                             <div className="nameOutput">{names.name}</div>
                                     </li>
                                 </Link>
