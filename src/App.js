@@ -17,10 +17,10 @@ const router = createBrowserRouter([
       },
       {
         path: ':userID',
-        element: <ContactView/>
+        element: <ContactView/>,
       },
       {
-        path: 'edit',
+        path: '/:userID/edit',
         element: <Edit/>
       }
     ]

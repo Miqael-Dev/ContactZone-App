@@ -94,19 +94,41 @@ code {
 }
 
 .editBtn, .deleteBtn {
+  text-decoration: none;
+}
+
+.edit, .delete {
   display: flex;
   align-items: center;
   color: rgb(68, 68, 68);
   background: rgb(207, 207, 207);
   cursor: pointer;
+
 }
 
 .editBtn p, .deleteBtn p {
   margin-left: 5px;
 }
 
-.editIcon, .deleteIcon{
-  width: 30%;
+.editIcon, .deleteIcon {
+  width: 20px;
+}
+
+.delete {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  width: 90px;
+}
+
+.edit {
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  width: 70px;
 }
 
 .outputIcons {
@@ -115,9 +137,9 @@ code {
   width: 100%;
 }
 
-.editBtn:hover, 
-.deleteBtn:hover {
-  background: rgba(151, 151, 151, 0.503);
+.edit:hover, 
+.delete:hover {
+  background: rgba(121, 121, 121, 0.503);
   border-radius: 4px;
 }
 
@@ -171,7 +193,7 @@ code {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   font-family: 'Calibri';
 }
 
@@ -311,6 +333,14 @@ code {
   padding: 10px;
   border-radius: 5px;
   color: white;
+}
+
+.loading {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 610px) {

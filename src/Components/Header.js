@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import db from "./Firebase"
-import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -30,30 +30,9 @@ const Header = () => {
     }
     
     console.log(data)
-    const [action, setAction] = useState()
     const [clickEvent, setClickEvent] = useState("AddPage");
     const [id, setId] = useState("");
-    const [clickOutput , setClickedOutput] = useState({
-        name: "",
-        age: null,
-        bio: "",
-        id: ""
-    })
-
-
-    const onChange = (e) => {
-        setClickedOutput(prev => ({...prev, [e.target.name]: e.target.value}));
-    }
-    const onSubmit = (e) => {
-        e.preventDefault();
-        if(clickOutput.name !== "" && clickOutput.age !== "" && clickOutput.bio !== ""){
-            const editRef = doc(db, 'user', `${id}`);
-            setDoc(editRef, clickOutput);
-            setAction(false)
-        }else {
-            setAction(true)
-        }  
-    }
+    
     
     return ( 
         <>
@@ -62,24 +41,16 @@ const Header = () => {
                 <div className="form">
                     {/* <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." /> */}
                     <TextField id="outlined-search" className="searchInput" size="small" onChange={handleChange} label="Search" type="search" />
-                    <button className="btnAdd" onClick={() => {
-                        setClickEvent("AddPage");
-                    }}>Add</button>
+                    <Link to={"add"}>
+                        <button className="btnAdd">Add</button>
+                    </Link>
                 </div>
                 <div className="formOutput">
                     {  
                         filter.map(names => (
                             <div className="output" key={names.id}>
                                 <Link to={names.id}>
-                                    <li  onClick={() => {
-                                        setUserInput("")
-                                        setClickedOutput({
-                                            name: `${names.name}`,
-                                            age: `${names.age}`,
-                                            bio: `${names.bio}`
-                                        });
-                                        setClickEvent("ViewPage");
-                                    }} >
+                                    <li  onClick={() => { setUserInput("") }} >
                                             <div className="nameOutput">{names.name}</div>
                                     </li>
                                 </Link>
@@ -91,10 +62,12 @@ const Header = () => {
             </div>
             <div className="rightArea">
                 <div className="nav600">
-                    <FontAwesomeIcon className="addBtn" onClick={() => {
-                        setClickEvent("AddPage");
-                        setUserInput("")
-                    }} icon={faCirclePlus}/>
+                    <Link to={"add"}>
+                        <FontAwesomeIcon className="addBtn" onClick={() => {
+                            setClickEvent("AddPage");
+                            setUserInput("")
+                        }} icon={faCirclePlus}/>
+                    </Link>
                     <div className="search600">
                         <input type="text" placeholder="Search..." className="searchInput600" value={userInput} onChange={handleChange} />
                         <FontAwesomeIcon className="searchBtn" icon={faMagnifyingGlass} />
@@ -104,15 +77,7 @@ const Header = () => {
                                     filter.map(names => (
                                         <div className="output" key={names.id}>
                                             <Link to={"contact"}>
-                                                <li  onClick={() => {
-                                                    setUserInput("")
-                                                    setClickedOutput({
-                                                        name: `${names.name}`,
-                                                        age: `${names.age}`,
-                                                        bio: `${names.bio}`
-                                                    });
-                                                    setClickEvent("ViewPage");
-                                                    }} >
+                                                <li  onClick={() => { setUserInput("")}} >
                                                         <div className="nameOutput">{names.name}</div>
                                                 </li>
                                             </Link>
@@ -123,29 +88,7 @@ const Header = () => {
                         }
                     </div>
                 </div>
-                {/* {
-                    clickEvent === "AddPage" ? <AddNew/> : null   
-                }
-                {
-                    clickEvent === "ViewPage" ? <ContactView 
-                    Name={clickOutput.name} 
-                    Age={clickOutput.age} 
-                    Bio={clickOutput.bio}
-                    Event={setClickEvent}
-                    Output={setClickedOutput}
-                    Id={setId}
-                    /> : null
-                }
-                {
-                    clickEvent === "EditPage" ? <Edit 
-                    nameValue={clickOutput.name} 
-                    ageValue={clickOutput.age}
-                    bioValue={clickOutput.bio}
-                    onSubmit={onSubmit}
-                    thisOnChange={onChange}
-                    action={action} /> : null
-                } */}
-                <Outlet />
+                    <Outlet />
                 <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
             </div>
         </div>
