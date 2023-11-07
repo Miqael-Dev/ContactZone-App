@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import AddNew from "./AddNew";
 import db from "./Firebase"
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
-import Edit from "./Edit";
 import { TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import ContactView from "./ContactView";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
-    let { userID } = useParams();
-    const [isLoaded, setIsLoaded] = useState()
     const [data, setData] = useState([]);
+    useEffect(() => {
+        onSnapshot(collection(db, "user"), (snapshot) => {
+            setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+            console.log(data)
+        })
+    }, [])
     const [userInput, setUserInput] = useState("");
+
     const filter = data.filter(names => {
         if(userInput === ""){
             return null;
@@ -27,13 +28,8 @@ const Header = () => {
         e.preventDefault();
         setUserInput(e.target.value.toLowerCase());
     }
-    useEffect(() => {
-        onSnapshot(collection(db, "user"), (snapshot) => {
-            setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
-            setIsLoaded(true);
-        })
-    }, [])
-
+    
+    console.log(data)
     const [action, setAction] = useState()
     const [clickEvent, setClickEvent] = useState("AddPage");
     const [id, setId] = useState("");
@@ -43,27 +39,6 @@ const Header = () => {
         bio: "",
         id: ""
     })
-
-    // const [output, setOuput] = useState(userID)
-    // useEffect(() => {
-    //     if(isLoaded === true) {
-    //     let user = data.find(users => users.id === userID);
-    //     setOuput(user)
-    //     setIsLoaded(false)
-    //     }
-    // })
-    // console.log(output)
-
-    // useEffect(() => {
-    //     if(isLoaded === false) {
-    //         setClickedOutput({
-    //             name: `${output.name}`,
-    //             age: `${output.age}`,
-    //             bio: `${output.bio}`
-    //         });
-    //         setClickEvent("ViewPage");
-    //     }
-    // }, [data])
 
 
     const onChange = (e) => {
@@ -95,7 +70,7 @@ const Header = () => {
                     {  
                         filter.map(names => (
                             <div className="output" key={names.id}>
-                                <Link>
+                                <Link to={names.id}>
                                     <li  onClick={() => {
                                         setUserInput("")
                                         setClickedOutput({
@@ -148,7 +123,7 @@ const Header = () => {
                         }
                     </div>
                 </div>
-                {
+                {/* {
                     clickEvent === "AddPage" ? <AddNew/> : null   
                 }
                 {
@@ -169,7 +144,8 @@ const Header = () => {
                     onSubmit={onSubmit}
                     thisOnChange={onChange}
                     action={action} /> : null
-                }
+                } */}
+                <Outlet />
                 <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
             </div>
         </div>
@@ -177,5 +153,5 @@ const Header = () => {
      );
 }
 
- 
+
 export default Header;

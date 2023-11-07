@@ -1,8 +1,20 @@
 import { useParams } from 'react-router';
 import db from './Firebase'
-import { deleteDoc, doc } from 'firebase/firestore';
+import { deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
-const ContactView = ({Name, Age , Bio, Output, Id, Event}) => {
+const ContactView = () => {
+    const { userID } = useParams()
+    const [contact, setContact] = useState([])
+
+    useEffect(() => {
+        onSnapshot(collection(db, `user`), (snapshot) => {
+            let res = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
+            let contacts = res.find(data => data.id === userID)
+            setContact(contacts)
+        })
+    })
+
     return (  
         <div className="ContactView">
             <div className="Board">
@@ -11,20 +23,21 @@ const ContactView = ({Name, Age , Bio, Output, Id, Event}) => {
                         <img src={require('./Images/user.png')}  alt="user icon"/>
                     </div>
                     <div className="ContactInfo">
-                        <h1 className="ContactName">{Name}</h1>
-                        <h3 className="ContactAge">Age: {Age}</h3>
-                        <h4 className="Bio">{Bio}</h4>
+                        <h1 className="ContactName">{contact.name}</h1>
+                        <h3 className="ContactAge">Age: {contact.age}</h3>
+                        <h4 className="Bio">{contact.bio}</h4>
                     </div>
                 </div>
                 <div className="outputIcons">
                     <div className='editBtn' onClick={() => {
-                            Output({
-                                name: `${Name}`,
-                                age: Number(Age),
-                                bio: `${Bio}`
-                            });
-                            Id(Output.id)
-                            Event("EditPage")
+                            // Output({
+                            //     name: `${Name}`,
+                            //     age: Number(Age),
+                            //     bio: `${Bio}`
+                            // });
+                            // Id(Output.id)
+                            // Event("EditPage");
+                            console.log(contact)
                         }}>
                         <img className="editIcon" src={require('./Images/editing.png')} alt="editing icon"/>
                         <p>Edit</p>
