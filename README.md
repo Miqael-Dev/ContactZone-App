@@ -2,7 +2,7 @@
 
 This project was made with a Todo App in mind. <br>As a way of learnig I added more features to improve a simple Todo App.
 
-[<img src="https://i.ibb.co/X7mxDBP/Contact-Zone.png" width="70%" alt="ContactZone Screenshot" />](https://contactzone-2ad8c.web.app/)
+[<img src="https://i.ibb.co/X7mxDBP/Contact-Zone.png" width="95%" alt="ContactZone Screenshot" />](https://contactzone-2ad8c.web.app/)
 
 ## Dependencies
 - React Router
