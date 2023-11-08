@@ -16,7 +16,7 @@ const ContactView = () => {
             let res = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
             let contacts = res.find(data => data.id === userID);
             if(contacts === undefined){
-                window.history.replaceState(null, null, '/')
+                return null;
             }else {
                 setContact(contacts)
                 setIsLoading(false)
@@ -51,6 +51,7 @@ const ContactView = () => {
                             </Link>
                             <Link to={'/'} className='deleteBtn'>
                                 <div className='delete' onClick={() => {
+                                    window.history.replaceState(null, null, '/')
                                     deleteDoc(doc(db, "user", `${contact.id}`))
                                     }}>
                                     <img className="deleteIcon" src={require('./Images/delete.png')} alt="editing icon"/>
