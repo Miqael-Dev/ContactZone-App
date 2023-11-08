@@ -35,7 +35,7 @@ const Header = () => {
                 <div className="leftArea">
                     <div className="form">
                         <TextField id="outlined-search" className="searchInput" size="small" onChange={handleChange} label="Search" type="search" />
-                        <Link to={"add"}>
+                        <Link to={"/"}>
                             <button className="btnAdd">Add</button>
                         </Link>
                     </div>
