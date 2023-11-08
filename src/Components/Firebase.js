@@ -2,8 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
     apiKey: "AIzaSyDvp-X0wJwOAx08daPL9YbuEwQGcILlT6M",
     authDomain: "contactzone-2ad8c.firebaseapp.com",

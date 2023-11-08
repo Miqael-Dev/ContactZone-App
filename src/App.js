@@ -1,18 +1,18 @@
 import Header from "./Components/Header";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ContactView, { contactDetails } from "./Components/ContactView";
+import ContactView from "./Components/ContactView";
 import Edit from "./Components/Edit";
 import AddNew from "./Components/AddNew";
 import Error from "./Components/Error";
 
 const router = createBrowserRouter([
   {
-    path : "/",
     element: <Header/>,
     errorElement: <Error/>,
     children: [
       {
-        path: 'add',
+        path: '/',
+        index:true,
         element: <AddNew/>
       },
       {

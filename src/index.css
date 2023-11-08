@@ -81,16 +81,14 @@ code {
 
 .editBtn{
   width: 60px;
-  padding: 8px;
+  padding: 8px 0 8px 0;
   border-radius: 5px;
-  margin: 4px;
 }
 
 .deleteBtn {
   width: 90px;
-  padding: 8px;
+  padding: 8px 0 8px 8px;
   border-radius: 5px;
-  margin: 4px
 }
 
 .editBtn, .deleteBtn {
@@ -133,8 +131,6 @@ code {
 
 .outputIcons {
   display: flex;
-  justify-content: center;
-  width: 100%;
 }
 
 .edit:hover, 
@@ -330,7 +326,7 @@ code {
 .linkback {
   text-decoration: none;
   background: #1B2E35;
-  padding: 10px;
+  padding: 6px;
   border-radius: 5px;
   color: white;
 }
@@ -476,5 +472,9 @@ code {
 
   .errorImage {
     width: 50vh;
+  }
+
+  .linkback {
+    font-size: 0.9rem;  
   }
 }

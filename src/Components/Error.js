@@ -9,7 +9,9 @@ export default function Error() {
                 <img src={require('./Images/Error.jpg')} alt='error message'/>
             </div>
             <div className='errorInfo'>
-                <Link className='linkback' to={"/"}>Back to HomePage</Link>
+                <Link className='linkback' to={'/'} onClick={() => {
+                  window.history.replaceState(null, null, '/')
+                }}>Back to HomePage</Link>
             </div>
         </div>
     </>

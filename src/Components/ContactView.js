@@ -37,24 +37,24 @@ const ContactView = () => {
                                 <h1 className="ContactName">{contact.name}</h1>
                                 <h3 className="ContactAge">Age: {contact.age}</h3>
                                 <h4 className="Bio">{contact.bio}</h4>
+                                <div className="outputIcons">
+                                    <Link to={"edit"} className='editBtn'>
+                                        <div className='edit'>
+                                            <img className="editIcon" src={require('./Images/editing.png')} alt="editing icon"/>
+                                            <p>Edit</p>
+                                        </div>
+                                    </Link>
+                                    <Link to={'/'} className='deleteBtn'>
+                                        <div className='delete' onClick={() => {
+                                            window.history.replaceState(null, null, '/')
+                                            deleteDoc(doc(db, "user", `${contact.id}`))
+                                            }}>
+                                            <img className="deleteIcon" src={require('./Images/delete.png')} alt="editing icon"/>
+                                            <p>Delete</p>
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                        <div className="outputIcons">
-                            <Link to={"edit"} className='editBtn'>
-                                <div className='edit'>
-                                    <img className="editIcon" src={require('./Images/editing.png')} alt="editing icon"/>
-                                    <p>Edit</p>
-                                </div>
-                            </Link>
-                            <Link to={'/'} className='deleteBtn'>
-                                <div className='delete' onClick={() => {
-                                    window.history.replaceState(null, null, '/')
-                                    deleteDoc(doc(db, "user", `${contact.id}`))
-                                    }}>
-                                    <img className="deleteIcon" src={require('./Images/delete.png')} alt="editing icon"/>
-                                    <p>Delete</p>
-                                </div>
-                            </Link>
                         </div>
                     </div>
                 </div>
