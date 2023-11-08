@@ -56,7 +56,7 @@ const Header = () => {
                 </div>
                 <div className="rightArea">
                     <div className="nav600">
-                        <Link to={"add"}>
+                        <Link to={"/"}>
                             <FontAwesomeIcon className="addBtn" onClick={() => {
                                 setUserInput("")
                             }} icon={faCirclePlus}/>
