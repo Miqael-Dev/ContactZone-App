@@ -6,7 +6,6 @@ import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 
 const Edit = () => {
     const { userID } = useParams()
-    const [contact, setContact] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [action, setAction] = useState()
     const [clickOutput , setClickedOutput] = useState({
@@ -20,14 +19,18 @@ const Edit = () => {
         onSnapshot(collection(db, `user`), (snapshot) => {
             let res = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
             let contacts = res.find(data => data.id === userID)
-            setClickedOutput({
+            if(contacts === undefined){
+                window.history.replaceState(null, null, '/')
+            }else {
+                setClickedOutput({
                 name: `${contacts.name}`,
                 age: contacts.age,
-                bio: `${contacts.bio}`
-            })
-            setIsLoading(false)
+                    bio: `${contacts.bio}`
+                })
+                setIsLoading(false)
+            }
         })
-    })
+    }, [userID])
     
     const onChange = (e) => {
         setClickedOutput(prev => ({...prev, [e.target.name]: e.target.value}));
@@ -50,11 +53,11 @@ const Edit = () => {
             </div> :
                 <div className="editPage">
                     <div className="editInputs">
-                    <center className="boardTitle">Edit Profile</center>
-                    <p className="authWarning">
+                        <center className="boardTitle">Edit Profile</center>
+                        <div className="authWarning">
                             {action === false ? <p className="success">Edited Successfully.</p> : null }
                             {action === true ? <p className="warn">Please fill all the spaces</p> : null }
-                        </p>
+                        </div>
                         <TextField 
                         id="outlined-basic" 
                         name = "name"

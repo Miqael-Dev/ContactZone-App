@@ -11,7 +11,6 @@ const Header = () => {
     useEffect(() => {
         onSnapshot(collection(db, "user"), (snapshot) => {
             setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
-            console.log(data)
         })
     }, [])
     const [userInput, setUserInput] = useState("");
@@ -29,69 +28,63 @@ const Header = () => {
         setUserInput(e.target.value.toLowerCase());
     }
     
-    console.log(data)
-    const [clickEvent, setClickEvent] = useState("AddPage");
-    const [id, setId] = useState("");
-    
     
     return ( 
         <>
-        <div className="mainContainer">
-            <div className="leftArea">
-                <div className="form">
-                    {/* <input id="searchInput" type={"text"} onChange={handleChange} placeholder="Search here..." /> */}
-                    <TextField id="outlined-search" className="searchInput" size="small" onChange={handleChange} label="Search" type="search" />
-                    <Link to={"add"}>
-                        <button className="btnAdd">Add</button>
-                    </Link>
-                </div>
-                <div className="formOutput">
-                    {  
-                        filter.map(names => (
-                            <div className="output" key={names.id}>
-                                <Link to={names.id}>
-                                    <li  onClick={() => { setUserInput("") }} >
-                                            <div className="nameOutput">{names.name}</div>
-                                    </li>
+            <div className="mainContainer">
+                <div className="leftArea">
+                    <div className="form">
+                        <TextField id="outlined-search" className="searchInput" size="small" onChange={handleChange} label="Search" type="search" />
+                        <Link to={"add"}>
+                            <button className="btnAdd">Add</button>
+                        </Link>
+                    </div>
+                    <div className="formOutput">
+                        {  
+                            filter.map(names => (
+                                <Link to={names.id} key={names.id}> 
+                                    <div className="output">
+                                            <li  onClick={() => { setUserInput("") }} >
+                                                    <div className="nameOutput">{names.name}</div>
+                                            </li>
+                                    </div>
                                 </Link>
-                            </div>
-                        ))
-                    }
-                </div>
-                <div className="name">Miqael-<span className="underline"><span style={{color:"red"}}>D</span>ev</span></div>
-            </div>
-            <div className="rightArea">
-                <div className="nav600">
-                    <Link to={"add"}>
-                        <FontAwesomeIcon className="addBtn" onClick={() => {
-                            setClickEvent("AddPage");
-                            setUserInput("")
-                        }} icon={faCirclePlus}/>
-                    </Link>
-                    <div className="search600">
-                        <input type="text" placeholder="Search..." className="searchInput600" value={userInput} onChange={handleChange} />
-                        <FontAwesomeIcon className="searchBtn" icon={faMagnifyingGlass} />
-                        { userInput === "" ? null :    
-                            <div id="form600" className="formOutput600">
-                                {
-                                    filter.map(names => (
-                                        <div className="output" key={names.id}>
-                                            <Link to={"contact"}>
-                                                <li  onClick={() => { setUserInput("")}} >
-                                                        <div className="nameOutput">{names.name}</div>
-                                                </li>
-                                            </Link>
-                                        </div>
-                                    )) 
-                                }
-                            </div>
+                            ))
                         }
                     </div>
+                    <div className="name">Miqael-<span className="underline"><span style={{color:"red"}}>D</span>ev</span></div>
                 </div>
-                    <Outlet />
-                <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
+                <div className="rightArea">
+                    <div className="nav600">
+                        <Link to={"add"}>
+                            <FontAwesomeIcon className="addBtn" onClick={() => {
+                                setUserInput("")
+                            }} icon={faCirclePlus}/>
+                        </Link>
+                        <div className="search600">
+                            <input type="text" placeholder="Search..." className="searchInput600" value={userInput} onChange={handleChange} />
+                            <FontAwesomeIcon className="searchBtn" icon={faMagnifyingGlass} />
+                            { userInput === "" ? null :    
+                                <div id="form600" className="formOutput600">
+                                    {
+                                        filter.map(names => (
+                                            <Link className="link600" key={names.id} to={names.id}>
+                                                <div className="output">
+                                                        <li  onClick={() => { setUserInput("")}} >
+                                                                <div className="nameOutput">{names.name}</div>
+                                                        </li>
+                                                </div>
+                                            </Link>
+                                        )) 
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                        <Outlet />
+                    <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
+                </div>
             </div>
-        </div>
         </>
      );
 }

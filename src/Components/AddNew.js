@@ -47,10 +47,10 @@ const AddNew = () => {
             <div className="AddNew" >
                 <div className="AddNewBoard">
                     <center className="boardTitle">Add Profile</center>
-                    <p className="authWarning">
+                    <div className="authWarning">
                         {action === false ? <p className="success">Added Successfully.</p> : null }
                         {action === true ? <p className="warn">Please fill all the spaces</p> : null }
-                    </p>
+                    </div>
                     <TextField 
                     id="outlined-basic" 
                     name = "name"

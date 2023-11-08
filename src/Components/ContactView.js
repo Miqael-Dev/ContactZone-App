@@ -1,8 +1,10 @@
 import { useParams } from 'react-router';
+import { redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import db from './Firebase'
 import { deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import Header from './Header';
 
 const ContactView = () => {
     const { userID } = useParams()
@@ -12,12 +14,16 @@ const ContactView = () => {
     useEffect(() => {
         onSnapshot(collection(db, `user`), (snapshot) => {
             let res = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
-            let contacts = res.find(data => data.id === userID)
-            setContact(contacts)
-            setIsLoading(false)
+            let contacts = res.find(data => data.id === userID);
+            if(contacts === undefined){
+                window.history.replaceState(null, null, '/')
+            }else {
+                setContact(contacts)
+                setIsLoading(false)
+            }
         })
-    })
-
+    }, [userID])
+    console.log(contact)
     return ( 
         <>
             { isLoading ? 
@@ -38,23 +44,14 @@ const ContactView = () => {
                         </div>
                         <div className="outputIcons">
                             <Link to={"edit"} className='editBtn'>
-                                <div className='edit'  onClick={() => {
-                                        // Output({
-                                        //     name: `${Name}`,
-                                        //     age: Number(Age),
-                                        //     bio: `${Bio}`
-                                        // });
-                                        // Id(Output.id)
-                                        // Event("EditPage");
-                                        console.log(contact)
-                                    }}>
+                                <div className='edit'>
                                     <img className="editIcon" src={require('./Images/editing.png')} alt="editing icon"/>
                                     <p>Edit</p>
                                 </div>
                             </Link>
                             <Link to={'/'} className='deleteBtn'>
                                 <div className='delete' onClick={() => {
-                                        deleteDoc(doc(db, "user", `${contact.id}`))
+                                    deleteDoc(doc(db, "user", `${contact.id}`))
                                     }}>
                                     <img className="deleteIcon" src={require('./Images/delete.png')} alt="editing icon"/>
                                     <p>Delete</p>
