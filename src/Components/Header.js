@@ -82,7 +82,7 @@ const Header = () => {
                         </div>
                     </div>
                         <Outlet />
-                    <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
+                        <div className="name600">Miqael-<span className="underline600"><span style={{color:"red"}}>D</span>ev</span></div>
                 </div>
             </div>
         </>

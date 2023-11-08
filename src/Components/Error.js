@@ -6,7 +6,7 @@ export default function Error() {
     <>
         <div className='errorPage'>
             <div className='errorImage'>
-                <img src={require('./Images/Error.jpg')} alt='404 image'/>
+                <img src={require('./Images/Error.jpg')} alt='error message'/>
             </div>
             <div className='errorInfo'>
                 <Link className='linkback' to={"/"}>Back to HomePage</Link>

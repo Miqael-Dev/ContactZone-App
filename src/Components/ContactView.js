@@ -1,22 +1,22 @@
 import { useParams } from 'react-router';
-import { redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import db from './Firebase'
 import { deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import Header from './Header';
+import Error from './Error';
 
 const ContactView = () => {
     const { userID } = useParams()
     const [contact, setContact] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
+    const [isAvailable, setIsAvailable] = useState(<div className="loading"><p>Loading...</p></div>);
 
     useEffect(() => {
         onSnapshot(collection(db, `user`), (snapshot) => {
             let res = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
             let contacts = res.find(data => data.id === userID);
             if(contacts === undefined){
-                return null;
+                setIsAvailable(<Error/>)
             }else {
                 setContact(contacts)
                 setIsLoading(false)
@@ -26,10 +26,7 @@ const ContactView = () => {
     console.log(contact)
     return ( 
         <>
-            { isLoading ? 
-            <div className="loading">
-                <p>Loading...</p> 
-            </div> :
+            { isLoading ? isAvailable :
                 <div className="ContactView">
                     <div className="Board">
                         <div className='Board-Info'>

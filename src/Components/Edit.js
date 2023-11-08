@@ -19,16 +19,12 @@ const Edit = () => {
         onSnapshot(collection(db, `user`), (snapshot) => {
             let res = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
             let contacts = res.find(data => data.id === userID)
-            if(contacts === undefined){
-                window.history.replaceState(null, null, '/')
-            }else {
                 setClickedOutput({
                 name: `${contacts.name}`,
                 age: contacts.age,
                     bio: `${contacts.bio}`
                 })
                 setIsLoading(false)
-            }
         })
     }, [userID])
     
